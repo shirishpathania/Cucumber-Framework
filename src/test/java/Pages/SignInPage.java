@@ -13,11 +13,11 @@ public class SignInPage extends CommonDriver
 
 
     WebDriverWait wait1;
-    WebElement signInButton = driver.findElement(By.xpath("//a[contains(@class,\"item\")]"));
-    WebElement emailTextbox = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
-    WebElement passwordTextbox = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
-    WebElement rememberMeCheckbox = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[1]/div/div[3]/div/input"));
-    WebElement loginButton = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+    By signInButton = By.xpath("//a[contains(@class,'item')]");
+    By emailTextbox = By.xpath("/html/body/div[2]/div/div/div[1]/div/div[1]/input");
+    By passwordTextbox = By.xpath("/html/body/div[2]/div/div/div[1]/div/div[2]/input");
+    By rememberMeCheckbox = By.xpath("/html/body/div[2]/div/div/div[1]/div/div[3]/div/input");
+    By loginButton = By.xpath("/html/body/div[2]/div/div/div[1]/div/div[4]/button");
 
 
 
@@ -26,7 +26,6 @@ public class SignInPage extends CommonDriver
     {
 
         wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
-        driver.navigate().to("http://localhost:5000/");
 
     }
 
@@ -34,23 +33,23 @@ public class SignInPage extends CommonDriver
 
     public void SignInActions()
     {
-        Wait.WaitToBeClickable(driver, "XPath", "//a[contains(@class,\"item\")]", 10);
-        signInButton.click();
+        Wait.WaitToBeClickable(driver, "XPath", "//a[contains(@class,'item')]", 10);
+        driver.findElement(signInButton).click();
 
         // Enter valid username in TextBox
 
         Wait.WaitToBeVisible(driver, "XPath", "/html/body/div[2]/div/div/div[1]/div/div[1]/input", 5);
-        emailTextbox.sendKeys("ivica.cuncic@gmail.com");
+        driver.findElement(emailTextbox).sendKeys("ivica.cuncic@gmail.com");
 
         // Enter valid password in TextBox
-        passwordTextbox.sendKeys("mars123");
+        driver.findElement(passwordTextbox).sendKeys("mars123");
 
         //Identify remember me checkbox and click
-        rememberMeCheckbox.click();
+        driver.findElement(rememberMeCheckbox).click();
 
         // Click on Login
-        loginButton.click();
-        Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[2]/a", 10);
+        driver.findElement(loginButton).click();
+        Wait.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[1]/div/div[2]/a", 10);
 
 
     }

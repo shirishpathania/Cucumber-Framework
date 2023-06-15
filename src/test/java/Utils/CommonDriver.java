@@ -8,13 +8,10 @@ public class CommonDriver
 
     public static WebDriver driver = new ChromeDriver();
 
-    public static void BeforeTestRun()
+    public static WebDriver BeforeTestRun()
     {
-//        driver = new ChromeDriver();
-
-
-
-
+        driver = new ChromeDriver();
+        return driver;
     }
 
     public static void AfterTestRun()
